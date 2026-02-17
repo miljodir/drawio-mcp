@@ -1,0 +1,43 @@
+name: Build MCP Tool Server container image
+
+on:
+  workflow_dispatch:
+    inputs:
+      no-build:
+        description: "Use an existing image instead of building a new"
+        required: false
+        default: "false"
+
+      no-build-tag:
+        description: "Existing image tag to use, e.g. '03-10-2022.210'"
+        required: false
+
+  push:
+    branches:
+      - "main"
+    paths:
+      - "mcp-tool-server/**"
+      - ".github/workflows/container-build.yaml"
+
+jobs:
+
+  production:
+    description: Build and push container image to GHCR
+    uses: miljodir/cp-workflow-templates/.github/workflows/acr.yaml@acr/v1
+    secrets: inherit
+    with:
+      # REQUIRED ARGUMENTS - change to fit your needs
+      environment: production
+      image-name: miljodir/drawio-mcp
+      build-path: "./mcp-tool-server"
+
+      # workflow_dispatch Arguments - leave as-is
+      no-build: ${{ github.event.inputs.no-build }}
+      no-build-tag: ${{ github.event.inputs.no-build-tag }}
+
+      # OPTIONAL ARGUMENTS - build and scan container image
+      use-ghcr: true
+      dockerfile-path: ./mcp-tool-server/Dockerfile
+      build-arg: |
+        TARGETOS=linux
+        TARGETARCH=amd64
