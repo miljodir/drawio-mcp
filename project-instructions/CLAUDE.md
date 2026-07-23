@@ -15,6 +15,10 @@ Alternative approach that works without installing the MCP server. Users add ins
 3. The script outputs a complete HTML page with the URL embedded as a clickable button
 4. Claude presents the HTML as an artifact — the user clicks the button to open draw.io
 
+## XML Reference
+
+The detailed draw.io XML generation reference (edge routing, containers, layers, tags, metadata, dark mode, style properties, XML well-formedness) lives in `shared/xml-reference.md` at the repo root — the single source of truth for all prompts. Users should copy its contents into their Claude Project alongside `claude-project-instructions.txt`.
+
 ## Coding Conventions
 
 - **Allman brace style**: Opening braces go on their own line for all control structures, functions, objects, and callbacks.
