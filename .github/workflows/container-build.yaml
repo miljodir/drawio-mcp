@@ -22,7 +22,6 @@ on:
 jobs:
 
   production:
-    description: Build and push container image to GHCR
     uses: miljodir/cp-workflow-templates/.github/workflows/acr.yaml@acr/v1
     secrets: inherit
     with:
