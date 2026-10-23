@@ -19,7 +19,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository }}/mcp-tool-server
   BUILD_CONTEXT: "."
   DOCKERFILE_PATH: ./mcp-tool-server/Dockerfile
 
